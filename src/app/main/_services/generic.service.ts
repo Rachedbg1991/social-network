@@ -8,6 +8,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IGenericServices } from './generic.interface';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -30,23 +31,23 @@ export class GenericService<T> implements IGenericServices<T>{
   
   //perform any post request
   create(uriToPost: string, entityToCreate: T): Observable<T> {
-    return this.http.post<T>(uriToPost, entityToCreate);
+    return this.http.post<T>(environment.baseUri + uriToPost, entityToCreate);
   }
   
   //perform any get request if we have parameters we pass it threw
   getOne(uriToGet: string, params?: Array<any>): Observable<T> {
     const httpPrams: HttpParams = this.buildParams(params);
-    return this.http.get<T>(uriToGet, {params: httpPrams });
+    return this.http.get<T>( environment.baseUri + uriToGet, {params: httpPrams });
   }
   
   getAll(uriToGet: string, params?: Array<any>): Observable<T[]> {
     const httpPrams: HttpParams = this.buildParams(params);
-    return this.http.get<Array<T>>(uriToGet, {params: httpPrams });
+    return this.http.get<Array<T>>(environment.baseUri + uriToGet, {params: httpPrams });
   }
   
   //perform any update request
   update(uriToUpdate: string, entityToUpdate: T): Observable<T> {
-    return this.http.put<T>(uriToUpdate, entityToUpdate);
+    return this.http.put<T>(environment.baseUri + uriToUpdate, entityToUpdate);
   }
   
   //perform any delete request
