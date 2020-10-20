@@ -1,31 +1,77 @@
 <div class="login-page">
-    <div class="content px20">
-      <form class="login-form">
-        <div class="text-center">
-          <h2 class="app-name">Material Admin</h2>
+  <div class="content px20">
+    <form 
+      class="login-form"
+      [formGroup] = "authenticationForm">
+      <div class="text-center">
+        <h2 class="app-name">{{ 'loginPage.title' | translate }}</h2>
+      </div>
+      <div fxLayout="row">
+        <div fxFlexFill>
+          <mat-form-field 
+            class="w-100"
+            appearance="outline">
+            <mat-label>{{ 'loginPage.userNameField.label' | translate }}</mat-label>
+            <input 
+              matInput 
+              placeholder="{{ 'loginPage.userNameField.placeHolder' | translate }}"
+              formControlName = "userName">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-error
+              *ngIf="userName.invalid && userName.errors.required">
+              {{ 'loginPage.userNameField.required' | translate }} ! 
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field
+            class="w-100" 
+            appearance="outline">
+            <mat-label>{{ 'loginPage.passwordField.label' | translate }}</mat-label>
+            <input 
+              matInput 
+              [type]="hide ? 'password' : 'text'" 
+              formControlName="password"
+              placeholder="{{ 'loginPage.passwordField.placeHolder' | translate }}">
+              <mat-icon 
+                matSuffix 
+                style="cursor: pointer;"
+                (click)="hide = !hide">
+                {{!hide ? 'visibility' : 'visibility_off'}}
+              </mat-icon>
+            <mat-error
+              *ngIf="password.invalid && password.errors.required">
+              {{ 'loginPage.passwordField.required' | translate }} !  
+            </mat-error>
+          </mat-form-field>
         </div>
-        <div fxLayout="row">
-          <div fxFlexFill>
-            <mat-form-field class="w-100">
-              <input matInput placeholder="Email">
-            </mat-form-field>
-            <mat-form-field class="w-100">
-              <input matInput type="password" placeholder="Password">
-            </mat-form-field>
-          </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between" fxLayout.xs="column" class="mt20 mb20">
+        <mat-checkbox 
+          color="primary" 
+          [ngStyle.xs]="{'margin-bottom.px': 10}">
+          {{ 'loginPage.buttons.rememberMe' | translate }}
+        </mat-checkbox>
+        <a href="javascript:void(0)">{{ 'loginPage.buttons.forgotPassword' | translate }}</a>
+      </div>
+      <div fxLayout="row">
+        <div fxFlexFill>
+          <button 
+            type="submit" 
+            mat-raised-button 
+            color="primary" 
+            [disabled] = "!authenticationForm.valid"
+            class="w-100">
+            Login
+          </button>
+          <button 
+            type="button" 
+            mat-button 
+            color="primary" 
+            class="w-100">
+            {{ 'loginPage.buttons.signUp' | translate }}
+          </button>
         </div>
-        <div fxLayout="row" fxLayoutAlign="space-between" fxLayout.xs="column" class="mt20 mb20">
-          <mat-checkbox color="primary" [ngStyle.xs]="{'margin-bottom.px': 10}">Remember Me</mat-checkbox>
-          <a href="javascript:void(0)">Forgot Password</a>
-        </div>
-        <div fxLayout="row">
-          <div fxFlexFill>
-            <button type="submit" mat-raised-button color="primary" class="w-100">Login</button>
-            <button type="button" mat-button color="primary" class="w-100">Sign Up</button>
-          </div>
-        </div>
-  
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
+</div>
   

@@ -1,0 +1,21 @@
+{
+    "loginPage": {
+        "title": "Bienvenue dans votre réseau social",
+        "userNameField": {
+            "label": "Nom d'utilisateur",
+            "placeHolder": "Enter votre nom d'utilisateur",
+            "required": "Veuillez entrer votre nom d'utilisateur"
+        },
+        "passwordField": {
+            "label": "Mot de passe",
+            "placeHolder": "Enter votre mot de passe",
+            "required": "Veuillez entrer votre mot de passe"
+        },
+        "buttons": {
+            "login": "Connexion",
+            "signUp": "Créer un compte",
+            "forgotPassword": "Mot de passe oublié",
+            "rememberMe": "Se souvenir de moi"
+        }
+    }
+}

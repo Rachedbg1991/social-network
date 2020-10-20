@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { AuthenticationComponent } from './_components/authentication/authentication.component';
 import { AuthenticationContainerComponent } from './_containers/authentication-container/authentication-container.component';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { MatIconModule } from '@angular/material/icon';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -16,11 +17,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
     MatInputModule,
     MatCheckboxModule,
     MatButtonModule,
-    AuthenticationRoutingModule
+    MatIconModule,
+    AuthenticationRoutingModule,
+    SharedModule
   ]
 })
 export class AuthenticationModule { }
