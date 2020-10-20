@@ -60,11 +60,12 @@
             color="primary" 
             [disabled] = "!authenticationForm.valid"
             class="w-100">
-            Login
+            {{ 'loginPage.buttons.login' | translate }}
           </button>
           <button 
             type="button" 
             mat-button 
+            [routerLink]="['/user/signup']"
             color="primary" 
             class="w-100">
             {{ 'loginPage.buttons.signUp' | translate }}

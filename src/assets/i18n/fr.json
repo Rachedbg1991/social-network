@@ -17,5 +17,46 @@
             "forgotPassword": "Mot de passe oublié",
             "rememberMe": "Se souvenir de moi"
         }
+    },
+    "signUpPage": {
+        "title": "S'inscrire",
+        "subtitle": "C'est facile",
+        "userNameField": {
+            "label": "Nom d'utilisateur",
+            "placeHolder": "Enter votre nom d'utilisateur",
+            "required": "Veuillez entrer votre nom d'utilisateur"
+        },
+        "passwordField": {
+            "label": "Mot de passe",
+            "placeHolder": "Enter votre mot de passe",
+            "required": "Veuillez entrer votre mot de passe"
+        },
+        "confirmPasswordField": {
+            "label": "Confirmation mot de passe",
+            "placeHolder": "Confirmer votre mot de passe",
+            "required": "Veuillez entrer de nouveau votre mot de passe"
+        },
+        "birthDateField": {
+            "label": "Date de naissance",
+            "placeHolder": "Sélectionner votre date de naissance",
+            "required": "Veuillez entrer votre date de naissance"
+        },
+        "emailField": {
+            "label": "Email",
+            "placeHolder": "Entrer votre adresse mail",
+            "required": "Veuillez entrer votre adresse mail"
+        },
+        "phoneNumberField": {
+            "label": "Numéro de téléphone",
+            "placeHolder": "Enter votre numéro de téléphone",
+            "required": "Veuillez entrer votre numéro de téléphone"
+        },
+        "buttons": {
+            "signUp": "Inscription",
+            "login": "Vous avez déjà un compte",
+            "facebook": "Inscription par votre compte Facebook",
+            "gmail": "Inscription par votre compte Gmail",
+            "linkedIn": "Inscription par votre compte LinkedIn"
+        }
     }
 }

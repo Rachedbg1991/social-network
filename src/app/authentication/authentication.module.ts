@@ -4,12 +4,8 @@ import { AuthenticationComponent } from './_components/authentication/authentica
 import { AuthenticationContainerComponent } from './_containers/authentication-container/authentication-container.component';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatButtonModule } from '@angular/material/button';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from '../shared/shared.module';
+import { MaterialFormsModule } from '../material-modules/material-forms/material-forms.module';
 
 
 @NgModule({
@@ -18,13 +14,9 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatButtonModule,
-    MatIconModule,
     AuthenticationRoutingModule,
-    SharedModule
+    SharedModule,
+    MaterialFormsModule
   ]
 })
 export class AuthenticationModule { }
