@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../_entities/user.entity';
+import { UserService } from '../../_services/user.service';
 
 @Component({
   selector: 'app-sign-up-container',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpContainerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readonly userService: UserService) { }
 
   ngOnInit(): void {
+  }
+
+  signUp(user: User): void{
+    this.userService.create('users', user).subscribe(
+      response => console.log(response),
+      err => console.log(err)
+    )
   }
 
 }

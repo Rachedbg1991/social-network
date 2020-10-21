@@ -44,7 +44,8 @@
         "emailField": {
             "label": "Email",
             "placeHolder": "Entrer votre adresse mail",
-            "required": "Veuillez entrer votre adresse mail"
+            "required": "Veuillez entrer votre adresse mail",
+            "invalidEmail": "Veuillez entrer une adresse mail valide"
         },
         "phoneNumberField": {
             "label": "Numéro de téléphone",

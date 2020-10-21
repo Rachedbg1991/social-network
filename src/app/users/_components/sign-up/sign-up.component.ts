@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../_entities/user.entity';
 
@@ -8,6 +8,9 @@ import { User } from '../../_entities/user.entity';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
+
+  @Output()
+  createUser = new EventEmitter<User>();
 
   signUpForm: FormGroup;
   hide = true;
@@ -66,6 +69,10 @@ export class SignUpComponent implements OnInit {
 
   get birthDate(){
     return this.signUpForm.get('birthDate');
+  }
+
+  makeUser(): void{
+    this.createUser.emit(this.signUpForm.value);
   }
 
   ngOnInit(): void {
