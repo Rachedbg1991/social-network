@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../_entities/user.entity';
+import { isValidConfirmation } from '../../_validators/valid-confirmation.validator';
 
 @Component({
   selector: 'app-sign-up',
@@ -16,7 +17,8 @@ export class SignUpComponent implements OnInit {
   hide = true;
   hideConfirmation = true;
   user: User= {
-    userName: null,
+    firstName: null,
+    lastName: null,
     password: null,
     email: null,
     birthDate: null
@@ -28,9 +30,11 @@ export class SignUpComponent implements OnInit {
 
   createForm(): void {
     this.signUpForm = new FormGroup({
-      'userName': new FormControl(this.user.userName,[
-        Validators.required,
-        Validators.minLength(8)
+      'firstName': new FormControl(this.user.firstName,[
+        Validators.required
+      ]),
+      'lastName': new FormControl(this.user.lastName,[
+        Validators.required
       ]),
       'password': new FormControl(this.user.password,[
         Validators.minLength(8),
@@ -38,7 +42,7 @@ export class SignUpComponent implements OnInit {
       ]),
       'confirmPassword': new FormControl('',[
         Validators.minLength(8),
-        Validators.required
+        Validators.required,
       ]),
       'email': new FormControl(this.user.email,[
         Validators.required,
@@ -49,10 +53,25 @@ export class SignUpComponent implements OnInit {
       ]),
       'phoneNumber': new FormControl(this.user.phoneNumber)
     })
+
+    this.password.valueChanges.subscribe((value) => {
+      this.confirmPassword.setValidators(
+        [ 
+          Validators.minLength(8),
+          Validators.required,
+          isValidConfirmation(value)
+        ]
+      )
+    })
+    
   }
 
-  get userName(){
-    return this.signUpForm.get('userName');
+  get firstName(){
+    return this.signUpForm.get('firstName');
+  }
+
+  get lastName(){
+    return this.signUpForm.get('lastName');
   }
 
   get password(){
@@ -69,6 +88,10 @@ export class SignUpComponent implements OnInit {
 
   get birthDate(){
     return this.signUpForm.get('birthDate');
+  }
+
+  inspectError(){
+    console.log(this.confirmPassword.errors);
   }
 
   makeUser(): void{

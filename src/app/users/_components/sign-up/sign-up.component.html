@@ -7,22 +7,43 @@
         <div class="text-center">
           <h2 class="app-name">{{ 'signUpPage.title' | translate }}</h2>
         </div>
-        <div fxLayout="row">
-          <div fxFlexFill>
+        <div fxLayout="row" fxLayoutGap="10px grid">
+          <div fxFlex="50">
             <mat-form-field 
               class="w-100"
               appearance="outline">
-              <mat-label>{{ 'signUpPage.userNameField.label' | translate }}</mat-label>
+              <mat-label>{{ 'signUpPage.firstNameField.label' | translate }}</mat-label>
               <input 
                 matInput 
-                placeholder="{{ 'signUpPage.userNameField.placeHolder' | translate }}"
-                formControlName = "userName">
+                placeholder="{{ 'signUpPage.firstNameField.placeHolder' | translate }}"
+                formControlName = "firstName">
               <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
               <mat-error
-                *ngIf="userName.invalid && userName.errors.required">
-                {{ 'signUpPage.userNameField.required' | translate }} ! 
+                *ngIf="firstName.invalid && firstName.errors.required">
+                {{ 'signUpPage.firstNameField.required' | translate }} ! 
               </mat-error>
             </mat-form-field>
+          </div>
+          <div fxFlex="50">
+            <mat-form-field 
+              class="w-100"
+              appearance="outline">
+              <mat-label>{{ 'signUpPage.lastNameField.label' | translate }}</mat-label>
+              <input 
+                matInput 
+                placeholder="{{ 'signUpPage.lastNameField.placeHolder' | translate }}"
+                formControlName = "lastName">
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              <mat-error
+                *ngIf="lastName.invalid && lastName.errors.required">
+                {{ 'signUpPage.lastNameField.required' | translate }} ! 
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row"
+            fxLayoutGap="10px grid">
+          <div fxFlex="50">
             <mat-form-field 
               class="w-100"
               appearance="outline">
@@ -41,6 +62,31 @@
                 {{ 'signUpPage.emailField.invalidEmail' | translate }} ! 
               </mat-error>
             </mat-form-field>
+          </div>
+          <div fxFlex="50">
+            <mat-form-field 
+                appearance="outline"
+                class="w-100">
+                <mat-label>{{ 'signUpPage.birthDateField.label' | translate }}</mat-label>
+                <input 
+                    matInput 
+                    [matDatepicker]="picker" 
+                    formControlName= "birthDate"
+                    placeholder="{{ 'signUpPage.birthDateField.placeHolder' | translate }}">
+                <mat-datepicker-toggle 
+                    matSuffix [for]="picker">
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error
+                    *ngIf="birthDate.invalid && birthDate.errors.required">
+                    {{ 'signUpPage.birthDateField.required' | translate }} !  
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row"
+            fxLayoutGap="10px grid">
+          <div fxFlex="50">
             <mat-form-field
               class="w-100" 
               appearance="outline">
@@ -61,6 +107,8 @@
                 {{ 'signUpPage.passwordField.required' | translate }} !  
               </mat-error>
             </mat-form-field>
+          </div>
+          <div fxFlex = "50">
             <mat-form-field
               class="w-100" 
               appearance="outline">
@@ -69,6 +117,7 @@
                 matInput 
                 [type]="hideConfirmation ? 'password' : 'text'" 
                 formControlName="confirmPassword"
+                (change)="inspectError()"
                 placeholder="{{ 'signUpPage.confirmPasswordField.placeHolder' | translate }}">
                 <mat-icon 
                   matSuffix 
@@ -80,38 +129,29 @@
                 *ngIf="confirmPassword.invalid && confirmPassword.errors.required">
                 {{ 'signUpPage.confirmPasswordField.required' | translate }} !  
               </mat-error>
-            </mat-form-field>
-
-            <mat-form-field 
-                appearance="outline"
-                class="w-100">
-                <mat-label>{{ 'signUpPage.birthDateField.label' | translate }}</mat-label>
-                <input 
-                    matInput 
-                    [matDatepicker]="picker" 
-                    formControlName= "birthDate"
-                    placeholder="{{ 'signUpPage.birthDateField.placeHolder' | translate }}">
-                <mat-datepicker-toggle 
-                    matSuffix [for]="picker">
-                </mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-                <mat-error
-                    *ngIf="birthDate.invalid && birthDate.errors.required">
-                    {{ 'signUpPage.birthDateField.required' | translate }} !  
+              <mat-error
+                *ngIf="confirmPassword.invalid && confirmPassword.errors.isInValid 
+                  && !confirmPassword.errors.required">
+                {{ 'signUpPage.confirmPasswordField.invalidConfirmation' | translate }} !  
               </mat-error>
-            </mat-form-field>
-            <mat-form-field 
-                appearance="outline"
-                class="w-100">
-                <mat-label>{{ 'signUpPage.phoneNumberField.label' | translate }}</mat-label>
-                <input 
-                    matInput
-                    formControlName= "phoneNumber"
-                    placeholder="{{ 'signUpPage.phoneNumberField.placeHolder' | translate }}">
-                <mat-icon matSuffix>call</mat-icon>
             </mat-form-field>
           </div>
         </div>
+        <div fxLayout="row">
+          <div fxFlexFill>
+            <mat-form-field 
+              appearance="outline"
+              class="w-100">
+              <mat-label>{{ 'signUpPage.phoneNumberField.label' | translate }}</mat-label>
+              <input 
+                  matInput
+                  formControlName= "phoneNumber"
+                  placeholder="{{ 'signUpPage.phoneNumberField.placeHolder' | translate }}">
+              <mat-icon matSuffix>call</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+        
         <div 
             fxLayout="row" 
             fxLayoutAlign="end" 

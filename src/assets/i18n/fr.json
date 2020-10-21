@@ -1,6 +1,6 @@
 {
     "loginPage": {
-        "title": "Bienvenue dans votre réseau social",
+        "title": "ChallengeWorld",
         "userNameField": {
             "label": "Nom d'utilisateur",
             "placeHolder": "Enter votre nom d'utilisateur",
@@ -21,10 +21,15 @@
     "signUpPage": {
         "title": "S'inscrire",
         "subtitle": "C'est facile",
-        "userNameField": {
-            "label": "Nom d'utilisateur",
-            "placeHolder": "Enter votre nom d'utilisateur",
-            "required": "Veuillez entrer votre nom d'utilisateur"
+        "firstNameField": {
+            "label": "Prénom",
+            "placeHolder": "Enter votre prénom",
+            "required": "Veuillez entrer votre prénom"
+        },
+        "lastNameField": {
+            "label": "Nom de famille",
+            "placeHolder": "Enter votre nom de famille",
+            "required": "Veuillez entrer votre nom de famille"
         },
         "passwordField": {
             "label": "Mot de passe",
@@ -34,7 +39,8 @@
         "confirmPasswordField": {
             "label": "Confirmation mot de passe",
             "placeHolder": "Confirmer votre mot de passe",
-            "required": "Veuillez entrer de nouveau votre mot de passe"
+            "required": "Veuillez entrer de nouveau votre mot de passe",
+            "invalidConfirmation": "Veuillez entrer le même mot de passe"
         },
         "birthDateField": {
             "label": "Date de naissance",

@@ -1,7 +1,8 @@
 import { GenericEntity } from 'src/app/main/_entities/Generic.entity';
 
 export class User extends GenericEntity{
-    userName: string;
+    firstName: string;
+    lastName: string;
     password: string;
     email: string;
     phoneNumber?: number;
