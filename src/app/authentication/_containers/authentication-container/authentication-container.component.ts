@@ -16,7 +16,7 @@ export class AuthenticationContainerComponent implements OnInit {
   }
 
   authenticate(authObject: Auth): void {
-    this.authService.postData('authentication', authObject).subscribe(
+    this.authService.authenticate('authentication', authObject).subscribe(
       (res) => console.log(res),
       (err) => console.log(err)
     );

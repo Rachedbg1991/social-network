@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GenericService } from 'src/app/main/_services/generic.service';
@@ -15,7 +15,7 @@ export class AuthenticationService extends GenericService<User> {
     super(http);
   }
 
-  postData(uriToPost: string, entityToCreate: Auth): Observable<User> {
-    return this.http.post<User>(environment.baseUri + uriToPost, entityToCreate);
+  authenticate(uriToPost: string, entityToCreate: Auth): Observable<any> {
+    return this.http.post<any>(environment.baseUri + uriToPost, entityToCreate, {observe: 'response'});
   }
 }
