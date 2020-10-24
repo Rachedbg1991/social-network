@@ -1,10 +1,10 @@
 {
     "loginPage": {
         "title": "ChallengeWorld",
-        "userNameField": {
-            "label": "Nom d'utilisateur",
-            "placeHolder": "Enter votre nom d'utilisateur",
-            "required": "Veuillez entrer votre nom d'utilisateur"
+        "emailField": {
+            "label": "Email",
+            "placeHolder": "Enter votre email",
+            "required": "Veuillez entrer votre email"
         },
         "passwordField": {
             "label": "Mot de passe",

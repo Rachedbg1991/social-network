@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Sexe } from '../../_entities/sexe.enum';
 import { User } from '../../_entities/user.entity';
 import { isValidConfirmation } from '../../_validators/valid-confirmation.validator';
 
@@ -21,7 +22,8 @@ export class SignUpComponent implements OnInit {
     lastName: null,
     password: null,
     email: null,
-    birthDate: null
+    birthDate: null,
+    sexe: Sexe.MALE
   };
 
   constructor() {
@@ -49,6 +51,9 @@ export class SignUpComponent implements OnInit {
         Validators.email
       ]),
       'birthDate': new FormControl(this.user.birthDate,[
+        Validators.required
+      ]),
+      'sexe': new FormControl(this.user.sexe,[
         Validators.required
       ]),
       'phoneNumber': new FormControl(this.user.phoneNumber)

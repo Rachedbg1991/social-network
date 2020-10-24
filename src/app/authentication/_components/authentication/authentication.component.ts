@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Auth } from '../../_entities/auth.interface';
 
 @Component({
@@ -10,9 +9,11 @@ import { Auth } from '../../_entities/auth.interface';
 })
 export class AuthenticationComponent implements OnInit {
 
+  @Output()
+  performAuth: EventEmitter<Auth> = new EventEmitter();
   authenticationForm: FormGroup;
   authUser: Auth= {
-    userName: '',
+    email: '',
     password: ''
   };
   hide = true;
@@ -22,8 +23,8 @@ export class AuthenticationComponent implements OnInit {
     this.createForm();
   }
 
-  get userName(){
-    return this.authenticationForm.get('userName');
+  get email(){
+    return this.authenticationForm.get('email');
   }
 
   get password(){
@@ -32,16 +33,19 @@ export class AuthenticationComponent implements OnInit {
 
   createForm(): void {
     this.authenticationForm = new FormGroup({
-      'userName': new FormControl(this.authUser.userName,[
+      'email': new FormControl(this.authUser.email,[
         Validators.required,
-        Validators.minLength(8)
+        Validators.email
       ]),
       'password': new FormControl(this.authUser.password,[
         Validators.required,
-        Validators.minLength(8),
-        Validators.maxLength(8)
+        Validators.minLength(8)
       ])
     })
+  }
+
+  startAuth(): void{
+    this.performAuth.emit(this.authenticationForm.value);
   }
 
   ngOnInit(): void {

@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
 })
 export class GenericService<T> implements IGenericServices<T>{
 
-  constructor(private http: HttpClient) { }
+  constructor(protected http: HttpClient) { }
 
   // building the request prameters genericly
   private buildParams(params: Array<Object>): HttpParams{
@@ -30,7 +30,7 @@ export class GenericService<T> implements IGenericServices<T>{
   } 
   
   //perform any post request
-  create(uriToPost: string, entityToCreate: T): Observable<T> {
+  postData(uriToPost: string, entityToCreate: T): Observable<T> {
     return this.http.post<T>(environment.baseUri + uriToPost, entityToCreate);
   }
   
@@ -46,7 +46,7 @@ export class GenericService<T> implements IGenericServices<T>{
   }
   
   //perform any update request
-  update(uriToUpdate: string, entityToUpdate: T): Observable<T> {
+  putData(uriToUpdate: string, entityToUpdate: T): Observable<T> {
     return this.http.put<T>(environment.baseUri + uriToUpdate, entityToUpdate);
   }
   

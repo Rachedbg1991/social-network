@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/users/_entities/user.entity';
+import { Auth } from '../../_entities/auth.interface';
+import { AuthenticationService } from '../../_services/authentication.service';
 
 @Component({
   selector: 'app-authentication-container',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthenticationContainerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readonly authService: AuthenticationService) { }
 
   ngOnInit(): void {
+  }
+
+  authenticate(authObject: Auth): void {
+    this.authService.postData('authentication', authObject).subscribe(
+      (res) => console.log(res),
+      (err) => console.log(err)
+    );
   }
 
 }

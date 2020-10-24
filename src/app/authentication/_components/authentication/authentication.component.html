@@ -2,6 +2,7 @@
   <div class="content px20">
     <form 
       class="login-form"
+      (submit)="startAuth()"
       [formGroup] = "authenticationForm">
       <div class="text-center">
         <h2 class="app-name">{{ 'loginPage.title' | translate }}</h2>
@@ -11,15 +12,15 @@
           <mat-form-field 
             class="w-100"
             appearance="outline">
-            <mat-label>{{ 'loginPage.userNameField.label' | translate }}</mat-label>
+            <mat-label>{{ 'loginPage.emailField.label' | translate }}</mat-label>
             <input 
               matInput 
-              placeholder="{{ 'loginPage.userNameField.placeHolder' | translate }}"
-              formControlName = "userName">
-            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              placeholder="{{ 'loginPage.emailField.placeHolder' | translate }}"
+              formControlName = "email">
+            <mat-icon matSuffix>email</mat-icon>
             <mat-error
-              *ngIf="userName.invalid && userName.errors.required">
-              {{ 'loginPage.userNameField.required' | translate }} ! 
+              *ngIf="email.invalid && email.errors.required">
+              {{ 'loginPage.emailField.required' | translate }} ! 
             </mat-error>
           </mat-form-field>
           <mat-form-field
@@ -63,7 +64,7 @@
             {{ 'loginPage.buttons.login' | translate }}
           </button>
           <button 
-            type="button" 
+            type="submit" 
             mat-button 
             [routerLink]="['/user/signup']"
             color="primary" 

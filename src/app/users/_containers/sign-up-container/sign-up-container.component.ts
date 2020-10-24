@@ -15,7 +15,7 @@ export class SignUpContainerComponent implements OnInit {
   }
 
   signUp(user: User): void{
-    this.userService.create('users', user).subscribe(
+    this.userService.postData('users', user).subscribe(
       response => console.log(response),
       err => console.log(err)
     )
