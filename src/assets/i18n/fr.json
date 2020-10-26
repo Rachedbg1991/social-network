@@ -58,6 +58,12 @@
             "placeHolder": "Enter votre numéro de téléphone",
             "required": "Veuillez entrer votre numéro de téléphone"
         },
+        "sexeField": {
+            "label": "Genre",
+            "MALE": "Homme",
+            "FEMALE": "Femme",
+            "required": "Veuillez sélectionner une valeur"
+        },
         "buttons": {
             "signUp": "Inscription",
             "login": "Vous avez déjà un compte",

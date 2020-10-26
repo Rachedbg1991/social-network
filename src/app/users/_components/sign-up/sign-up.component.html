@@ -137,8 +137,10 @@
             </mat-form-field>
           </div>
         </div>
-        <div fxLayout="row">
-          <div fxFlexFill>
+        <div 
+          fxLayout="row"
+          fxLayoutGap="10px grid">
+          <div fxFlex="50">
             <mat-form-field 
               appearance="outline"
               class="w-100">
@@ -149,6 +151,25 @@
                   placeholder="{{ 'signUpPage.phoneNumberField.placeHolder' | translate }}">
               <mat-icon matSuffix>call</mat-icon>
             </mat-form-field>
+          </div>
+          <div fxFlex="50">
+            <label>
+              {{ 'signUpPage.sexeField.label' | translate }} 
+            </label>
+            <p class="pt5">
+              <mat-radio-group formControlName="sexe">
+                <mat-radio-button class="pr10" value="MALE">
+                  {{ 'signUpPage.sexeField.MALE' | translate }}
+                </mat-radio-button>
+                <mat-radio-button value="FEMALE">
+                  {{ 'signUpPage.sexeField.FEMALE' | translate }}
+                </mat-radio-button>
+              </mat-radio-group>
+              <mat-error
+                *ngIf="sexe.invalid && sexe.errors.required">
+                {{ 'signUpPage.sexeField.required' | translate }} !  
+              </mat-error>
+            </p>
           </div>
         </div>
         

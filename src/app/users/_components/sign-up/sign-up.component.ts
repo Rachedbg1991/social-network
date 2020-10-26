@@ -23,7 +23,7 @@ export class SignUpComponent implements OnInit {
     password: null,
     email: null,
     birthDate: null,
-    sexe: Sexe.MALE
+    sexe: null
   };
 
   constructor() {
@@ -93,6 +93,10 @@ export class SignUpComponent implements OnInit {
 
   get birthDate(){
     return this.signUpForm.get('birthDate');
+  }
+
+  get sexe(){
+    return this.signUpForm.get('sexe');
   }
 
   inspectError(){
