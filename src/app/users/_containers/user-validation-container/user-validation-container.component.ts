@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../../_services/user.service';
 
 @Component({
   selector: 'app-user-validation-container',
@@ -8,11 +9,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserValidationContainerComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) {
-    this.route.params.subscribe( params => console.log(params) );
-  }
+
+  constructor(private route: ActivatedRoute, private readonly userService: UserService) {}
 
   ngOnInit(): void {
+    this.route.params.subscribe( params => 
+      this.userService.getOne('users/activate/'+ params.id).subscribe(
+        res => console.log(res),
+        err => console.log(err)
+      ) 
+    );
+    
   }
 
 }
