@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Sexe } from '../../_entities/sexe.enum';
 import { User } from '../../_entities/user.entity';
 import { isValidConfirmation } from '../../_validators/valid-confirmation.validator';
 
@@ -56,7 +55,7 @@ export class SignUpComponent implements OnInit {
       'sexe': new FormControl(this.user.sexe,[
         Validators.required
       ]),
-      'phoneNumber': new FormControl(this.user.phoneNumber)
+      'phoneNumber': new FormControl(this.user.phoneNumber),
     })
 
     this.password.valueChanges.subscribe((value) => {
@@ -68,7 +67,6 @@ export class SignUpComponent implements OnInit {
         ]
       )
     })
-    
   }
 
   get firstName(){
@@ -97,10 +95,6 @@ export class SignUpComponent implements OnInit {
 
   get sexe(){
     return this.signUpForm.get('sexe');
-  }
-
-  inspectError(){
-    console.log(this.confirmPassword.errors);
   }
 
   makeUser(): void{

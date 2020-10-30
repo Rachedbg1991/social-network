@@ -18,7 +18,7 @@ export class GenericService<T> implements IGenericServices<T>{
   constructor(protected http: HttpClient) { }
 
   // building the request prameters genericly
-  private buildParams(params?: Array<Object>): HttpParams{
+  buildParams(params?: Array<Object>): HttpParams{
     const httpParamsToBuild : HttpParams = new HttpParams();
     if(!params) return httpParamsToBuild;
     params.forEach( (param) => {
